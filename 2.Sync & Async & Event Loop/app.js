@@ -1,20 +1,20 @@
 // Synchronous
 // Code runs line by line
 
-// console.log("html/css");
-// console.log("js");
-// console.log("react js");
-// console.log("react native");
+console.log("html/css");
+console.log("js");
+console.log("react js");
+console.log("react native");
 
-//Asynchronous programming
+// Asynchronous programming
 //we have to wait some thing in code
-// console.log("html/css");
-// setTimeout(() => {
-//   console.log("js");
-// }, 0);
-// // }, 1000);
-// console.log("react js");
-// console.log("react native");
+console.log("html/css");
+setTimeout(() => {
+  console.log("js");
+}, 0); //web api ke pas callstack jab tak free nai hoga
+// }, 1000);
+console.log("react js");
+console.log("react native");
 
 //is js is asyncronous by default ?
 //answer is no
@@ -34,11 +34,12 @@
 
 // ================================================================================================
 // There are three ways to convert Asynchronous code in js
+// Callback Functions/Web Apis
 
 // Method 1: Callback Function/Web Apis
-// setTimeout(() => {
-//   console.log("Data received");
-// }, 2000);
+setTimeout(() => {
+  console.log("Data received");
+}, 2000);
 
 // console.log("Loading...");
 
@@ -145,12 +146,17 @@ await function learn(){
 }
 
 
-learn();
+try {
+  learn();
+} catch (error) {
+  // reject wali chiz idhr ajaegi
+}
+
 
 // 3 Ways to Handle Asynchronous Code
 // 1.Callback Function/Webapi
 // 2.Promises
-// 3.Async/Wait
+// 3.Async/Wait (jab apk pas multiple promises hon)
 
 // in ways se apka code asynrnously convert hosakta hai
 
