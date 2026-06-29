@@ -1,6 +1,9 @@
 const dummyApiUrl = "https://jsonplaceholder.typicode.com/posts";
 const todoBodyElement = document.querySelector("#todos-listing");
 const todosListing = document.querySelector("#todos-listing");
+const createPostBtn = document.querySelector("#create-post-form");
+const postTitleInput = document.querySelector("#post_title");
+const postBodyInput = document.querySelector("#post_body");
 // function name() {}
 // arrow function
 // const name = () => {
@@ -51,14 +54,60 @@ todosListing.addEventListener("click", function (e) {
 
   if (
     currentElement.className === "btn btn-danger delete-btn" &&
-    // confirm("Are you sure?")
-    true
+    confirm("Are you sure?") //true
+    // true
   ) {
     const currentElementPostId = currentElement.getAttribute("data-post-id");
     // console.log("delete working start");
-    console.log(currentElementPostId, "currentElementPostId");
+    // console.log(currentElementPostId, "currentElementPostId");
+    fetch(`${dummyApiUrl}/${currentElementPostId}`, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("delete successfully!");
+        getPosts();
+      })
+      .catch((error) => console.error(error));
   }
 });
+
+// #Create Post
+
+createPostBtn.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const title = postTitleInput.value;
+  const body = postBodyInput.value;
+
+  if (!title || !body) {
+    alert("please fill the input fields");
+    return;
+  }
+
+  fetch(dummyApiUrl, {
+    method: "POST",
+    body: JSON.stringify({
+      title: title,
+      body: body,
+      // title,
+      // body
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data, "data");
+
+      postTitleInput.value = "";
+      postBodyInput.value = "";
+
+      $("#create-post").modal("hide");
+      getPosts();
+    })
+    .catch((error) => console.error());
+  // .catch(console.error);
+});
+
 /*
 Rest Api Pattern
 
@@ -87,3 +136,12 @@ PATCH	/users/1            (update specific post partially with some data like on
 DELETE  /users/1            (delete post by id)
 
 */
+
+// arrow functions
+// function(){}
+
+// () => {}
+
+// (param) => {}
+// param => {}
+// param => value //auto return hogi
