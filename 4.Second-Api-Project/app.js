@@ -1,9 +1,16 @@
 const dummyApiUrl = "https://jsonplaceholder.typicode.com/posts";
+// const dummyApiUrl = "https://dummyjson.com/posts"; For Test
+
 const todoBodyElement = document.querySelector("#todos-listing");
 const todosListing = document.querySelector("#todos-listing");
-const createPostBtn = document.querySelector("#create-post-form");
+const createPostBtnForm = document.querySelector("#create-post-form");
 const postTitleInput = document.querySelector("#post_title");
 const postBodyInput = document.querySelector("#post_body");
+const editPostTitleElement = document.querySelector("#edit_post_title");
+const editPostBodyElement = document.querySelector("#edit_post_body");
+const editPostForm = document.querySelector("#edit-post-form");
+const editPostId = document.querySelector("#edit_post_id");
+
 // function name() {}
 // arrow function
 // const name = () => {
@@ -29,7 +36,7 @@ const getPosts = () => {
             <td>${singleData.userId}</td>
             <td>${singleData.title}</td>
             <td>
-              <a class="btn btn-primary edit-btn" href="#edit-post">Edit</a>
+              <a class="btn btn-primary edit-btn" href="#edit-post" data-post-id="${singleData.id}">Edit</a>
             </td>
             <td>
               <a href="#" class="btn btn-danger delete-btn" data-post-id="${singleData.id}">Delete</a>
@@ -70,11 +77,32 @@ todosListing.addEventListener("click", function (e) {
       })
       .catch((error) => console.error(error));
   }
+
+  // Edit btn condition
+  if (currentElement.className === "btn btn-primary edit-btn") {
+    const currentElementPostId = currentElement.getAttribute("data-post-id");
+
+    fetch(`${dummyApiUrl}/${currentElementPostId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, "data");
+        // const id = data.id;
+        // const title = data.title;
+        $("#edit-post").modal("show");
+        const { id, title, body } = data;
+        // console.log(id, title, body, "id,title,body");
+
+        editPostTitleElement.value = title;
+        editPostBodyElement.value = body;
+        editPostId.value = currentElementPostId;
+      })
+      .catch((error) => console.error(error));
+  }
 });
 
 // #Create Post
 
-createPostBtn.addEventListener("submit", (e) => {
+createPostBtnForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const title = postTitleInput.value;
@@ -106,6 +134,42 @@ createPostBtn.addEventListener("submit", (e) => {
     })
     .catch((error) => console.error());
   // .catch(console.error);
+});
+
+editPostForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const title = editPostTitleElement.value;
+  const body = editPostBodyElement.value;
+
+  if (!title || !body) {
+    alert("please fill the input fields");
+    return;
+  }
+
+  const currentPostId = editPostId.value;
+  // console.log(currentPostId, "currentPostId");
+
+  fetch(`${dummyApiUrl}/${currentPostId}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      title,
+      body,
+    }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data, "edit form submit data");
+
+      editPostTitleElement.value = "";
+      editPostBodyElement.value = "";
+      editPostId.value = "";
+
+      $("#edit-post").modal("hide");
+
+      getPosts();
+    })
+    .catch((error) => console.error(error));
 });
 
 /*
