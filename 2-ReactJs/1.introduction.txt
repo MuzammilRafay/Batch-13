@@ -1,0 +1,139 @@
+What is React js?
+
+React js is a javascript framework & it is created by facebook
+
+Big projects of react js:
+facebook, netflix, instagram, olx etc....
+
+
+
+-why react js is created what is the problem
+
+we need to select dom elements again & again
+
+
+As web applications 
+like Facebook became larger, 
+managing the UI with vanilla JavaScript became difficult.
+
+
+Developers had to manually:
+
+- Find DOM elements
+- Update the UI
+- Keep data and the screen synchronized
+- Handle complex interactions
+
+This resulted in:
+
+-Lots of repetitive code
+-More bugs
+-Difficult maintenance
+-Poor scalability
+
+
+Facebook engineer Jordan Walke 
+created React in 2011 to solve these problems. 
+It was later released as open source (publicly free code) in 2013.
+
+
+React's Core Idea
+
+Instead of manually updating the UI, 
+developers only update the data (state), 
+and React automatically updates the UI.
+
+
+-Vanilla Javascript / Simple Javascript
+const count = document.querySelect("div");
+count.innerText = count.innerText + 1
+
+-React js
+setCount(count + 1);
+
+we are changing the variable only & our ui will update automatically
+
+
+React was created to make building large, interactive
+web applications easier, faster, more maintainable, 
+and less error-prone by automatically keeping the UI in sync 
+with the application's data.
+
+
+
+2.without refresh your url change using javascript
+single page application = SPA
+
+
+we have also top libraries like to resolve the same problem:
+
+1.React js (it is created by facebook)
+2.Vue js (it is created by Evan You developer)
+3.Angular Js (it is created by google)
+
+
+why learn react js
+
+1.community strong
+2.we already have large application
+3.You can develop android/ios application using react js 
+-React Native
+-Example for mobile apps
+ -Instagram
+ -Facebook
+ -Careem
+ -Foodpanda
+
+
+What is a User Interface (UI)
+
+A User Interface (UI) is everything the user sees and interacts with on a website or application.
+
+Examples:
+
+Buttons
+Forms
+Navigation bars
+Cards
+Tables
+Sidebars
+Dashboards
+Modals
+
+React helps us build these UI elements efficiently.
+
+
+Component-Based
+Build the UI using small, reusable pieces called components.
+
+App
+├── Navbar
+├── Sidebar
+├── ProductCard
+├── Footer
+├── Header
+
+
+
+Installation Process
+1.Download & Install Node js
+    https://nodejs.org/en/download
+2.Git ui
+    https://git-scm.com/downloads
+
+
+open terminal
+write this words in terminal one by one
+
+node -v
+git -v
+
+
+to install react js project run this command
+npx create-react-app your-project-name
+
+then open cmd in this project
+
+npm run start
+
+
