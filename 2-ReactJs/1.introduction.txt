@@ -137,3 +137,48 @@ then open cmd in this project
 npm run start
 
 
+React Files
+Get familiar with the files in your React project.
+
+package.json - The main file that defines the dependencies/packages and other settings for your project.
+node_modules - Source code for depencies. Do not touch.
+public - The directory where your static files are stored.
+src/index.js - Main entrypoint to bootstrap the app.
+src/App.js - The root component of the app.
+src/App.spec.js - Unit tests for the app.
+src/*.css - Styles for the app.
+
+
+https://babeljs.io/repl#?config_lz=N4IgZglgNgpgdgQwLYxALhAJxgBygOgCsBnADxABoQdtiYAXY9AbWZHgDdLR6FMBzBkwwATGGAQBXKI0ogkAexHSYwiVDoBfALoU22BAGN63LJLj0IKdCCn0FSBJcMgdekMV6CAtACZTYoYKmE7BxABqMJjEEApwNr4ADL4AzN4AjOlyOBA4MFAQcDAACpgKOArECFA2ABZGANau2roeCpKYhjAAKgCeeTaKyrCuQA&code_lz=DwEwlgbgfAUDwAsBMACMIC8AiAzgUwGMAXMAewDsBaBPAQ3HIHMsoB1UgJwGswngB6ZLAHhoQA&lineWrap=true&version=8.0.4
+
+in react js babel js is converting our react js html to babel js
+
+<div>
+<h2 id="section-heading">Working</h2>
+</div>
+
+
+import { jsx as _jsx } from "react/jsx-runtime";
+/*#__PURE__*/_jsx("div", {
+  children: /*#__PURE__*/_jsx("h2", {
+    id: "section-heading",
+    children: "Working"
+  })
+});
+
+
+https://webpack.js.org/
+
+What is webpack?
+webpack is a bundler
+
+
+https://nodejs.org/en
+
+
+npm run dev
+
+what is npm ?
+npm is a package manager
+
+
