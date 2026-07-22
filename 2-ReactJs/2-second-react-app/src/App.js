@@ -2,6 +2,27 @@ import { useState } from "react";
 import "./App.css";
 import DisplayCount from "./components/DisplayCount";
 
+const tasks = [
+  {
+    name: "task one",
+  },
+  {
+    name: "task two",
+  },
+  {
+    name: "task three",
+  },
+  {
+    name: "task four",
+  },
+  {
+    name: "task fiv",
+  },
+  {
+    name: "task six",
+  },
+];
+
 function App() {
   // let count = 0;
   const [count, setCount] = useState(0); // [getValue,setValue]
@@ -37,6 +58,11 @@ function App() {
       >
         Show/hide count btn
       </button>
+
+      {/* we will use map for showing the multiple items */}
+      {tasks.map(function (singleTask) {
+        return <p>{singleTask.name}</p>;
+      })}
     </div>
   );
 }
